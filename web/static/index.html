@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>When the Seafloor Becomes Mountains | Geonoryx</title>
+  <link rel="stylesheet" href="/style.css">
+  <script defer src="/plotly.min.js"></script>
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="kicker">30DayMapChallenge · Day 15 · Inside Out</p>
+      <h1>When the Seafloor Becomes Mountains</h1>
+      <p id="region" class="region">Loading study area…</p>
+    </header>
+    <div class="explorer">
+      <aside aria-label="Map controls">
+        <div class="comparison" role="group" aria-label="Relief comparison">
+          <button id="original" aria-pressed="false" disabled>Original depth</button>
+          <button id="inverted" aria-pressed="true" disabled>Inverted height</button>
+        </div>
+        <p id="mode-copy">Below sea level becomes above zero in a sign flip. A seabed cell at −6,000 m rises to +6,000 m.</p>
+
+        <div class="legend">
+          <h2 id="legend-title">Artistic height (m)</h2>
+          <div id="legend-ramp" aria-hidden="true"></div>
+          <div id="legend-ticks"></div>
+        </div>
+
+        <label for="exaggeration">Vertical exaggeration <output id="factor" for="exaggeration">35×</output></label>
+        <input id="exaggeration" type="range" min="1" max="60" value="35" disabled>
+        <p class="hint">Exaggeration changes the 3D shape on screen. The legend and cell values stay in metres.</p>
+        <div class="view">
+          <button id="view-toggle" disabled>Switch to 2D</button>
+          <button id="reset" disabled>Reset view</button>
+        </div>
+        <div class="profile-controls">
+          <div class="view">
+            <button id="draw-profile" disabled>Draw A–B</button>
+            <button id="clear-profile" disabled>Clear</button>
+          </div>
+          <p id="profile-help" class="hint" role="status">
+            Choose two ocean cells in 2D.
+          </p>
+        </div>
+
+        <div class="stats">
+          <h2>Deepest native grid cell</h2>
+          <p id="deepest">—</p>
+          <p id="sample" class="hint"></p>
+        </div>
+      </aside>
+      <section class="map" aria-label="Interactive terrain relief">
+        <p id="status" role="status">Opening terrain grid…</p>
+        <div id="terrain" aria-label="Bathymetry relief plot"></div>
+        <section id="profile-panel" aria-labelledby="profile-title" hidden>
+          <div class="profile-heading">
+            <h2 id="profile-title">Cross-section A–B</h2>
+            <span id="profile-summary"></span>
+          </div>
+          <div id="profile-chart" aria-label="Cross-section chart"></div>
+        </section>
+        <p id="interaction" class="hint">Drag to rotate · Scroll to zoom · Hover for coordinates and values</p>
+      </section>
+    </div>
+    <footer>
+      <p><strong>Method.</strong> The web surface samples WGS84 cell centres from the GEBCO grid. Missing cells, land, and elevations at zero are masked. Inverted height is an artistic transformation.</p>
+      <p>Map by Ananda Dewi (Geonoryx) · <a href="https://doi.org/10.5285/4f68d5c7-45eb-f999-e063-7086abc036fa">GEBCO Bathymetric Compilation Group (2026), The GEBCO_2026 Grid</a> · <a href="https://www.gebco.net/data-products/gridded-bathymetry/terms-of-use">GEBCO terms of use</a></p>
+    </footer>
+  </main>
+</body>
+</html>
